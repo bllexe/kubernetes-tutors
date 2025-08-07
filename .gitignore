@@ -1,0 +1,20 @@
+
+---
+
+### ✅ `.gitignore`
+
+```gitignore
+# Kubernetes related
+*.yaml~       # Backup files
+*.log
+*.tmp
+
+# MacOS
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Other
+*.swp         # Vim swap files
+*.bak
