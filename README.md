@@ -19,16 +19,16 @@ Each directory represents a self-contained project or scenario.
 
 | Section | Title | Description |
 |--------|-------|-------------|
-| 01 | [Minikube Setup](01-minikube-setup/) | Setup and verify Minikube on your local machine *(Optional, if already installed)* |
-| 02 | [Basic Deployment](02-basic-deployment/) | Deploy a simple `nginx` app using `Deployment` and `NodePort` service |
-| 03 | [ConfigMap & Secret](03-configmap-secret/) | Use ConfigMaps and Secrets to inject config data and secure values |
-| 04 | [Persistent Volume](04-persistent-volume/) | Add persistent storage to a pod using `PV` and `PVC` |
-| 05 | [Ingress Controller](05-ingress/) | Route external traffic using Ingress and NGINX Controller |
-| 06 | [Monitoring & Logging](06-monitoring-logging/) | Setup Prometheus, Grafana, and Loki for observability |
-| 07 | [Helm Packaging](07-helm/) | Deploy applications using Helm charts and package your own |
-| 08 | [CI/CD Integration](08-ci-cd/) | Automate Kubernetes deployments with GitHub Actions |
-| 09 | [Production Practices](09-prod-practices/) | Health checks, resource limits, autoscaling, and namespaces |
-| 10 | [Fullstack App Deployment](10-fullstack-example/) | Deploy a complete Angular + Spring Boot + PostgreSQL stack |
+| 01 | [Minikube Setup](minikube-setup/) | Setup and verify Minikube on your local machine *(Optional, if already installed)* |
+| 02 | [Basic Deployment](basic-deployment/) | Deploy a simple `nginx` app using `Deployment` and `NodePort` service |
+| 03 | [ConfigMap & Secret](configmap-secret/) | Use ConfigMaps and Secrets to inject config data and secure values |
+| 04 | [Persistent Volume](persistent-volume/) | Add persistent storage to a pod using `PV` and `PVC` |
+| 05 | [Ingress Controller](ingress/) | Route external traffic using Ingress and NGINX Controller |
+| 06 | [Monitoring & Logging](monitoring-logging/) | Setup Prometheus, Grafana, and Loki for observability |
+| 07 | [Helm Packaging](helm/) | Deploy applications using Helm charts and package your own |
+| 08 | [CI/CD Integration](ci-cd/) | Automate Kubernetes deployments with GitHub Actions |
+| 09 | [Production Practices](prod-practices/) | Health checks, resource limits, autoscaling, and namespaces |
+| 10 | [Fullstack App Deployment](fullstack-example/) | Deploy a complete Angular + Spring Boot + PostgreSQL stack |
 
 ---
 

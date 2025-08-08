@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: spring-app-config
+data:
+  APP_NAME: "MySpringApp"
+  APP_ENV: "dev"

@@ -37,4 +37,4 @@ kubectl get svc nginx-service
 minikube ip
 
 ## open in browser
-http://<minikube-ip>:30007
+http://minikube-ip:30007
