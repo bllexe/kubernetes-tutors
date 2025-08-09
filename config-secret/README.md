@@ -49,3 +49,8 @@ http://minikube-ip:30008/env
 ```
 
 ## Clean up
+
+kubectl delete -f spring-app-service.yaml
+kubectl delete -f spring-app-deployment.yaml
+kubectl delete -f configmap.yaml
+kubectl delete -f secret.yaml
