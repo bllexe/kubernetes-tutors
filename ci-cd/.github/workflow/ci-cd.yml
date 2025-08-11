@@ -1,0 +1,59 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: docker.io
+  IMAGE_NAME: yourdockerhubusername/helloworld
+  KUBE_NAMESPACE: helm-demo
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 21 
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '21'
+
+    - name: Build with Maven
+      run: ./mvnw clean package -DskipTests=false
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: ${{ env.IMAGE_NAME }}:latest
+
+    - name: Setup Helm
+      uses: azure/setup-helm@v3
+
+    - name: Setup kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: 'latest'
+
+    - name: Configure kubectl
+      run: |
+        kubectl config set-cluster minikube --server=https://your-k8s-api-server --insecure-skip-tls-verify=true
+        kubectl config set-credentials admin --token=${{ secrets.K8S_TOKEN }}
+        kubectl config set-context minikube --cluster=minikube --user=admin --namespace=${{ env.KUBE_NAMESPACE }}
+        kubectl config use-context minikube
+
+    - name: Helm upgrade/install
+      run: |
+        helm upgrade --install springbootapp ./spring-boot-app --namespace ${{ env.KUBE_NAMESPACE }} --set image.repository=${{ env.IMAGE_NAME }} --set image.tag=latest
