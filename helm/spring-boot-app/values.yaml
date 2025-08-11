@@ -1,0 +1,19 @@
+replicaCount: 1
+
+image:
+  repository: helloworld
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 8080
+  nodePort: 30081
+
+env:
+  - name: SPRING_DATASOURCE_URL
+    value: jdbc:mysql://my-mysql.helm-demo.svc.cluster.local:3306/mydb
+  - name: SPRING_DATASOURCE_USERNAME
+    value: myuser
+  - name: SPRING_DATASOURCE_PASSWORD
+    value: mypass
