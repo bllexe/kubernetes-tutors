@@ -7,7 +7,6 @@ It covers:
 - **Liveness & Readiness probes**
 - **Resource requests/limits**
 - **Horizontal Pod Autoscaler (HPA)**
-
 ---
 
 ## 📂 Files
@@ -35,13 +34,14 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/late
 
 ## 2️⃣ Apply the Configuration
 
-kubectl apply -f k8s-prod-demo.yaml
+``` bash kubectl apply -f k8s-prod-demo.yaml ```
 
 ## 3️⃣ Verify the Deployment
 
-kubectl get pods -n prod-demo
+``` bash
+ bash kubectl get pods -n prod-demo
 kubectl get svc -n prod-demo
-kubectl get hpa -n prod-demo
+kubectl get hpa -n prod-demo ```
 
 ## 4️⃣ Understanding the Configuration
 
@@ -94,12 +94,12 @@ metrics:
 
 ## 5️⃣ Test HPA with Load
 
-kubectl run -it load-generator --rm --image=busybox --restart=Never -- \
-  sh -c "while true; do wget -q -O- http://springboot-service.prod-demo.svc.cluster.local; done"
-
+``` bash kubectl run -it load-generator --rm --image=busybox --restart=Never -- \
+  sh -c "while true; do wget -q -O- http://springboot-service.prod-demo.svc.cluster.local; done" 
+  ```
   After a few minutes, check HPA scaling:
 
-  kubectl get hpa -n prod-demo
+```bash  kubectl get hpa -n prod-demo ```
 
   You should see the replica count increase automatically.
 
@@ -113,7 +113,8 @@ forced delete
     "finalizers": [
         "kubernetes"
     ]
-}```
+}
+```
 
 delete kubernetes scope 
 
