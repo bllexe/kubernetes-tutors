@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-secret
+  namespace: tutor
+type: Opaque
+data:
+  POSTGRES_PASSWORD: cG9zdGdyZXM=  # base64("postgres")
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+  namespace: tutor
+data:
+  POSTGRES_DB: tutor_db
+  POSTGRES_USER: tutor_user 
+  POSTGRES_PASSWORD: postgres 

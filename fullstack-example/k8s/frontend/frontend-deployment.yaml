@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tutor-ui
+  namespace: tutor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tutor-ui
+  template:
+    metadata:
+      labels:
+        app: tutor-ui
+    spec:
+      containers:
+        - name: tutor-ui
+          image: docker_user_name/tutor-ui:1.0.0
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: tutor
+spec:
+  selector:
+    app: tutor-ui
+  ports:
+    - port: 80
+      targetPort: 80

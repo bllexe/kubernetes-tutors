@@ -104,9 +104,13 @@ metrics:
   You should see the replica count increase automatically.
 
 🧹 Cleanup
-``` bash kubectl delete namespace prod-demo  ```
+``` bash kubectl delete namespace prod-demo ```
 
-forced delete
+kubectl delete all --all -n tutor --force --grace-period=0
+kubectl patch namespace tutor -p '{"metadata":{"finalizers":[]}}' --type=merge
+kubectl delete namespace tutor --force --grace-period=0
+
+forced delete with json
 
 ``` bash kubectl get namespace prod-demo -o json > tmp.json
 "spec": {
